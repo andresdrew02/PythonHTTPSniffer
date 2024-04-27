@@ -42,10 +42,7 @@ def capture_http_packets(interface=None, verbose=False, output="./captured_http_
             if filter_http_packet(packet) is False:
                 if verbose == True: print(Fore.RED + packet.summary() + Style.RESET_ALL)
             else:
-                try:
-                    payload = str(bytes(packet[TCP].payload).decode("utf-8"))
-                except:
-                    payload = ""
+                payload = str(bytes(packet[TCP].payload))
 
                 # Custom Packet Object
                 custom_packet = {
